@@ -9,6 +9,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
+    overflow-x: hidden;
 }
 
 /* Header and Navigation */
@@ -18,6 +19,7 @@ header {
     top: 20px;
     z-index: 1000;
     padding: 0 20px;
+    transition: all 0.3s ease;
 }
 
 nav {
@@ -27,6 +29,7 @@ nav {
     border-radius: 50px;
     padding: 15px 30px;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 
 nav ul {
@@ -35,6 +38,7 @@ nav ul {
     align-items: center;
     list-style: none;
     gap: 3rem;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -43,21 +47,32 @@ nav a {
     font-weight: 500;
     font-size: 0.9rem;
     transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
 }
 
 nav a:hover {
     color: #2563eb;
+    background: rgba(37, 99, 235, 0.1);
 }
 
 .logo {
     height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
 }
 
 /* Hero Sections */
-.hero, .services-hero, .about-hero, .booking-hero {
+.hero, .services-hero, .about-hero, .booking-hero, .rooms-hero {
     background-size: cover;
     background-position: center;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,142 +84,158 @@ nav a:hover {
 }
 
 .hero {
-    background-image: url('./images/index.jpg');
+    background-image: url('./images/indexHero.jpeg');
 }
 
 .services-hero {
-    background-image: url('/images/services-hero.jpg');
-    height: 50vh;
+    background-image: url('./images/ServicesHero.jpeg');
+    height: 60vh;
 }
 
 .about-hero {
-    background-image: url('./images/about.avif');
-    height: 50vh;
+    background-image: url('./images/AboutHero.jpeg');
+    height: 60vh;
 }
 
 .booking-hero {
-    background-image: url('./images/booking.jpg');
+    background-image: url('./images/BookingHero.jpeg');
     height: auto;
-    min-height: 60vh;
-    padding-top: 80px;
+    min-height: 100vh;
+    padding: 120px 20px 40px;
 }
 
-.hero::before, .services-hero::before, .about-hero::before, .booking-hero::before {
+.hero::before, .services-hero::before, .about-hero::before, .booking-hero::before, .rooms-hero::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
-.hero h1, .services-hero h1, .about-hero h1, .booking-hero h1 {
-    font-size: 2.5rem;
+.hero h1, .services-hero h1, .about-hero h1, .booking-hero h1, .rooms-hero h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: 2rem;
     max-width: 800px;
     position: relative;
     z-index: 2;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    line-height: 1.2;
 }
 
 /* Features */
 .features {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+    padding: clamp(1rem, 3vw, 2rem);
     background: white;
-    margin-top: 10px;
+    margin: 20px auto;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1200px;
     position: relative;
     z-index: 2;
 }
 
 .features article {
     text-align: center;
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    transition: transform 0.3s ease;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.features article:hover {
+    transform: translateY(-5px);
 }
 
 .features img {
-    border-radius: 10%;
-    width: 160px;
-    height: 110px;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 .features h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    margin: 1rem 0;
     color: #1a1a1a;
 }
 
 .features p {
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     color: #666;
 }
 
 /* Offers Section */
 .offers {
-    padding: 4rem 2rem;
+    padding: clamp(2rem, 5vw, 4rem);
     background: white;
 }
 
 .offers h2 {
-    text-align: left;
-    margin-bottom: 0.5rem;
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .offers > p {
-    text-align: left;
     max-width: 800px;
-    margin: 0 0 2rem;
+    margin: 0 auto 2rem;
     color: #666;
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    text-align: center;
 }
 
 .offer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .offer-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .offer-card img {
     width: 100%;
-    height: 180px;
+    height: 250px;
     object-fit: cover;
 }
 
 .card-content {
-    padding: 1rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
 }
 
 .card-content h3 {
-    font-size: 1.1rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin-bottom: 0.5rem;
 }
 
 .price {
     color: #2563eb;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
 }
 
 .rating {
@@ -216,18 +247,24 @@ nav a:hover {
 /* Services Page */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+    padding: clamp(2rem, 5vw, 4rem);
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .service-card {
     position: relative;
-    border-radius: 8px;
+    border-radius: 15px;
     overflow: hidden;
-    aspect-ratio: 4/5;
+    aspect-ratio: 3/4;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.03);
 }
 
 .service-card img {
@@ -243,9 +280,9 @@ nav a:hover {
     right: 0;
     background: rgba(0,0,0,0.7);
     color: white;
-    padding: 0.8rem;
+    padding: clamp(0.8rem, 2vw, 1.2rem);
     margin: 0;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     text-align: center;
 }
 
@@ -253,79 +290,95 @@ nav a:hover {
 .about-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: clamp(2rem, 5vw, 4rem);
 }
 
 .about-intro, .about-focus {
     margin-bottom: 2rem;
     background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .about-intro h2, .about-focus h2 {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
     margin-bottom: 1rem;
     color: #2563eb;
 }
 
 .about-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
     margin-top: 2rem;
 }
 
 .about-gallery img {
     width: 100%;
-    height: 250px;
+    height: 300px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-gallery img:hover {
+    transform: scale(1.03);
 }
 
 /* Booking Form */
 .booking-form {
     background: white;
-    padding: 2rem;
-    border-radius: 8px;
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    max-width: 400px;
-    width: 100%;
+    max-width: 500px;
+    width: 90%;
     margin: 2rem auto;
     position: relative;
     z-index: 2;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     color: #333;
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-weight: 500;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #2563eb;
 }
 
 .btn-primary {
     background: #2563eb;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    padding: 1rem;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     font-weight: 500;
+    transition: background 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -336,72 +389,80 @@ nav a:hover {
 footer {
     background: #1a1a1a;
     color: white;
-    padding: 3rem 2rem;
+    padding: clamp(2rem, 5vw, 3rem);
 }
 
 .newsletter {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .newsletter h3 {
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
 }
 
 .newsletter form {
     display: flex;
     gap: 0.5rem;
-    max-width: 400px;
+    max-width: 500px;
     margin: 1rem auto;
+    padding: 0 1rem;
 }
 
 .newsletter input {
     flex: 1;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    border-radius: 8px;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 .newsletter button {
     background: #2563eb;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    transition: background 0.3s ease;
+}
+
+.newsletter button:hover {
+    background: #1d4ed8;
 }
 
 .footer-links {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(2rem, 4vw, 3rem);
     max-width: 1200px;
+    margin: 0 auto 2rem;
 }
 
 .footer-links h4 {
-    color: rgb(7, 0, 0);
-    margin-bottom: 0.8rem;
-    font-size: 1rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
 }
 
 .footer-links ul {
     list-style: none;
-    margin-left: -60%;
 }
 
 .footer-links a {
     color: #888;
     text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1.8;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    line-height: 2;
+    transition: color 0.3s ease;
+    display: inline-block;
 }
 
 .footer-links a:hover {
-    color: rgb(87, 84, 84);
+    color: white;
+    transform: translateX(5px);
 }
 
 .copyright {
@@ -409,53 +470,131 @@ footer {
     color: #888;
     padding-top: 2rem;
     border-top: 1px solid #333;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     header {
-        position: static;
-        padding: 0;
-        top: 0;
+        top: 10px;
     }
 
     nav {
-        border-radius: 0;
-        padding: 1rem;
+        padding: 12px 20px;
     }
 
     nav ul {
-        flex-direction: column;
-        gap: 1rem;
+        gap: 2rem;
+    }
+
+    .hero, .services-hero, .about-hero {
+        height: 80vh;
     }
 
     .features {
-        grid-template-columns: 1fr;
-        margin-top: -30px;
+        margin: 15px;
     }
 
-    .hero h1 {
-        font-size: 2rem;
+    .offer-card img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        position: static;
+        padding: 10px;
     }
 
-    .services-hero {
-        margin-top: 0;
+    nav {
+        border-radius: 10px;
     }
 
-    .booking-hero {
-        padding-top: 2rem;
+    nav ul {
+        gap: 1rem;
+    }
+
+    nav a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .logo {
+        height: 25px;
+        width: 25px;
+    }
+
+    .hero, .services-hero, .about-hero {
+        height: 60vh;
+    }
+
+    .features article {
+        padding: 1rem;
     }
 
     .newsletter form {
         flex-direction: column;
     }
 
-    .offers h2 {
+    .footer-links {
         text-align: center;
     }
 
-    .offers > p {
-        text-align: center;
+    .footer-links ul {
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 8px;
+    }
+
+    nav ul {
+        gap: 0.5rem;
+    }
+
+    .features img {
+        max-width: 160px;
+    }
+
+    .offer-card img {
+        height: 180px;
+    }
+
+    .service-card {
+        aspect-ratio: 3/4;
+    }
+
+    .booking-form {
+        padding: 1.2rem;
+    }
+
+    .footer-links {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 320px) {
+    nav a {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .logo {
+        height: 20px;
+        width: 20px;
+    }
+
+    .features img {
+        max-width: 140px;
+    }
+
+    .offer-card img {
+        height: 160px;
+    }
+
+    .booking-form {
+        padding: 1rem;
     }
 }

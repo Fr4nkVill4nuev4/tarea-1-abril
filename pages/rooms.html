@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas - Real Estate Hotels</title>
+    <title>Rooms - Real Estate Hotels</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
                 <li><a href="rooms.html">Rooms</a></li>
                 <li>
                     <a href="../index.html" class="logo-container">
-                        <img src="../images/logo.png" width="70px" alt="logo">
+                        <img src="../images/logo.png" width="70px"  alt="logo">
                     </a>
                 </li>
                 <li><a href="services.html">Services</a></li>
@@ -24,41 +24,33 @@
         </nav>
     </header>
 
-    <main>
-        <section class="booking-hero">
-            <h1>RESERVA TU ESTANCIA</h1>
-            <div class="booking-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Nombre completo</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="check-in">Fecha de entrada</label>
-                        <input type="date" id="check-in" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="check-out">Fecha de salida</label>
-                        <input type="date" id="check-out" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="room-type">Tipo de habitación</label>
-                        <select id="room-type" required>
-                            <option value="">Selecciona una opción</option>
-                            <option value="standard">Standard Room</option>
-                            <option value="deluxe">Deluxe Room</option>
-                            <option value="suite">Executive Suite</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-primary">Reservar ahora</button>
-                </form>
+    <section class="services-hero">
+        <div class="hero-text">
+            <h2>Our Rooms</h2>
+            <p>Choose the perfect space for your stay</p>
+        </div>
+    </section>
+
+    <section class="offers">
+        <h3 class="section-title">Available Rooms</h3>
+        <div class="features">
+            <div class="offer-card">
+                <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg" alt="Standard Room">
+                <h4>Standard Room</h4>
+                <p>Cozy and comfortable for short stays. $120/night</p>
             </div>
-        </section>
-    </main>
+            <div class="offer-card">
+                <img src="https://images.pexels.com/photos/1838640/pexels-photo-1838640.jpeg" alt="Deluxe Room">
+                <h4>Deluxe Room</h4>
+                <p>Spacious room with a city view. $180/night</p>
+            </div>
+            <div class="offer-card">
+                <img src="https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg" alt="Suite">
+                <h4>Executive Suite</h4>
+                <p>Top-tier luxury experience. $300/night</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="newsletter">
